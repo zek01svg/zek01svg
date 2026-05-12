@@ -1,0 +1,92 @@
+{
+  "ignorePatterns": [
+    "*.gen.ts",
+    "node_modules/**",
+    ".output/**",
+    ".tanstack",
+    "dist/**",
+    "build/**",
+    "coverage/**"
+  ],
+  "options": {
+    "typeAware": true
+  },
+  "plugins": [
+    "typescript",
+    "react",
+    "jsx-a11y",
+    "unicorn",
+    "import",
+    "promise"
+  ],
+  "categories": {
+    "correctness": "error",
+    "suspicious": "warn",
+    "perf": "warn"
+  },
+  "env": {
+    "es2024": true
+  },
+  "rules": {
+    "no-console": ["warn", { "allow": ["warn", "error", "info"] }],
+    "no-debugger": "error",
+
+    // Type-aware rules (Enabled via options.typeAware)
+    "typescript/no-floating-promises": "warn",
+    "typescript/no-misused-promises": "warn",
+
+    // Unicorn best practices
+    "unicorn/no-null": "off",
+
+    "no-unused-vars": [
+      "error",
+      { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_" }
+    ],
+    "typescript/consistent-type-imports": [
+      "warn",
+      { "prefer": "type-imports", "fixStyle": "separate-type-imports" }
+    ],
+    "typescript/no-unnecessary-condition": [
+      "warn",
+      { "allowConstantLoopConditions": true }
+    ],
+    "typescript/no-non-null-assertion": "error",
+    "typescript/no-explicit-any": "warn",
+
+    // Import rules
+    "import/no-duplicates": "error",
+    "import/first": "error",
+    "import/extensions": "off",
+    "import/consistent-type-specifier-style": ["error", "prefer-top-level"],
+
+    // Restrictions
+    "no-restricted-imports": [
+      "error",
+      {
+        "name": "zod",
+        "message": "Use `import { z } from 'zod/v4'` instead to ensure v4."
+      }
+    ],
+
+    "react/react-in-jsx-scope": "off",
+    "react/no-children-prop": "off",
+    "jsx-a11y/label-has-associated-control": "off"
+  },
+  "overrides": [
+    {
+      "files": ["src/**/*.ts", "src/**/*.tsx"],
+      "env": {
+        "browser": true
+      },
+      "rules": {
+        "react/rules-of-hooks": "error",
+        "react/exhaustive-deps": "warn",
+        "react/react-in-jsx-scope": "off",
+        "jsx-a11y/alt-text": "error",
+        "jsx-a11y/anchor-is-valid": "warn",
+        "react/no-children-prop": "off",
+        "jsx-a11y/label-has-associated-control": "off"
+      }
+    }
+  ]
+}

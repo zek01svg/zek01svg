@@ -1,6 +1,6 @@
 # hi, i'm charles 👋
 
-incoming y3 @ smu information systems
+y3 @ smu information systems · backend intern @ eiu industry 4.0 innovation center
 
 i like building things that actually work in production. currently deep in cloud infrastructure, backend engineering, and modern full-stack tooling.
 
