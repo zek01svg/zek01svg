@@ -13,12 +13,13 @@
     "lint:fix": "oxlint --fix",
     "format:fix": "oxfmt --write .",
     "typecheck": "tsc --noEmit",
-    "start": "bun --import ./instrument.server.mjs .output/server/index.mjs",
+    "start": "bun .output/server/index.mjs",
     "prepare": "lefthook install || true",
     "clean": "bunx rimraf node_modules .output .tanstack .vercel dist .turbo"
   },
   "dependencies": {
     "@sentry/tanstackstart-react": "^10.49.0",
+    "@t3-oss/env-core": "^0.13.11",
     "@tanstack/react-router": "^1.168.23",
     "@tanstack/react-router-ssr-query": "^1.166.11",
     "@tanstack/react-start": "^1.167.42",
