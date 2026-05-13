@@ -34,14 +34,14 @@ export default function Hero() {
           transition={{ delay: 0.4, duration: 0.5 }}
           className="text-lg md:text-xl text-muted-foreground max-w-2xl font-light leading-relaxed"
         >
-          I'm an International Student at{" "}
+          I'm an incoming penultimate at{" "}
           <span className="text-foreground font-semibold">
-            Singapore Management University
+            Singapore Management University - BSc Information Systems
           </span>{" "}
-          studying Information Systems. I like writing backend code and wiring
-          up cloud infrastructure. Still learning, but I take it seriously.
-          Currently interning at Eastern International University's Industry 4.0
-          Innovation Center in Vietnam.
+          . I like writing backend code and wiring up cloud infrastructure.
+          Still learning, but I take it seriously. Currently interning at
+          Eastern International University's Industry 4.0 Innovation Center in
+          Vietnam.
         </motion.p>
 
         <motion.div
