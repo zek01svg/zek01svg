@@ -1,6 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
-import ProjectsPage from "../features/projects/pages/projects-page";
+import { fetchProjects } from "@/lib/strapi";
+import ProjectsPage from "@/features/projects/pages/projects-page";
 
 export const Route = createFileRoute("/projects")({
-  component: ProjectsPage,
+  loader: () => fetchProjects(),
+  component: function ProjectsRoute() {
+    const projects = Route.useLoaderData();
+    return <ProjectsPage projects={projects} />;
+  },
 });

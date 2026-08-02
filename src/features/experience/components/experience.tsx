@@ -1,10 +1,12 @@
-"use client";
-
 import { motion } from "framer-motion";
-import { EXPERIENCES } from "@/constants/data";
+import type { StrapiExperience } from "@/lib/strapi";
 import { Badge } from "@/components/ui/badge";
 
-export default function Experience() {
+interface Props {
+  experiences: StrapiExperience[];
+}
+
+export default function Experience({ experiences }: Props) {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
@@ -39,9 +41,9 @@ export default function Experience() {
         </div>
 
         <div className="relative border-l-2 border-foreground/25 ml-3 pl-12 space-y-16">
-          {EXPERIENCES.map(exp => (
+          {experiences.map(exp => (
             <motion.div
-              key={exp.company}
+              key={exp.documentId}
               variants={itemVariants}
               className="relative group space-y-4"
             >
@@ -70,8 +72,8 @@ export default function Experience() {
               </div>
 
               <ul className="space-y-3 text-sm text-muted-foreground leading-relaxed font-light max-w-2xl">
-                {exp.bullets?.map(bullet => (
-                  <li key={bullet} className="flex gap-4">
+                {exp.bullets?.map((bullet, i) => (
+                  <li key={i} className="flex gap-4">
                     <span className="text-muted-foreground/40 font-mono">
                       —
                     </span>

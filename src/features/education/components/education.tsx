@@ -1,10 +1,12 @@
-"use client";
-
 import { motion } from "framer-motion";
-import { USER_DATA } from "@/constants/data";
+import type { StrapiEducation } from "@/lib/strapi";
 import { Badge } from "@/components/ui/badge";
 
-export default function Education() {
+interface Props {
+  education: StrapiEducation[];
+}
+
+export default function Education({ education }: Props) {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
@@ -39,9 +41,9 @@ export default function Education() {
         </div>
 
         <div className="relative border-l-2 border-foreground/25 ml-3 pl-12 space-y-16">
-          {USER_DATA.education.map(edu => (
+          {education.map(edu => (
             <motion.div
-              key={`${edu.school}-${edu.degree}`}
+              key={edu.documentId}
               variants={itemVariants}
               className="relative group space-y-4"
             >

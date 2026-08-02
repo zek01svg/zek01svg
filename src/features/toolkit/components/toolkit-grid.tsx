@@ -1,36 +1,40 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { TOOLKIT } from "@/constants/data";
+import type { StrapiToolkit } from "@/lib/strapi";
 import { useState } from "react";
 
-const categories = [
-  {
-    id: "01",
-    title: "Languages",
-    items: TOOLKIT.languages,
-    description: "Core logic and systems programming.",
-  },
-  {
-    id: "02",
-    title: "Cloud Infrastructure",
-    items: TOOLKIT.cloud,
-    description: "Multi-cloud infrastructure and deployment.",
-  },
-  {
-    id: "03",
-    title: "Frameworks",
-    items: TOOLKIT.frameworks,
-    description: "High-performance frameworks.",
-  },
-  {
-    id: "04",
-    title: "Structural Concepts",
-    items: TOOLKIT.concepts,
-    description: "Architectural patterns and system design.",
-  },
-];
+interface Props {
+  toolkit: StrapiToolkit;
+}
 
-export default function ToolkitGrid() {
+export default function ToolkitGrid({ toolkit }: Props) {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
+
+  const categories = [
+    {
+      id: "01",
+      title: "Languages",
+      items: toolkit.languages,
+      description: "Core logic and systems programming.",
+    },
+    {
+      id: "02",
+      title: "Cloud Infrastructure",
+      items: toolkit.cloud,
+      description: "Multi-cloud infrastructure and deployment.",
+    },
+    {
+      id: "03",
+      title: "Frameworks",
+      items: toolkit.frameworks,
+      description: "High-performance frameworks.",
+    },
+    {
+      id: "04",
+      title: "Structural Concepts",
+      items: toolkit.concepts,
+      description: "Architectural patterns and system design.",
+    },
+  ];
 
   return (
     <section

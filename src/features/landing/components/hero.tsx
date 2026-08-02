@@ -1,9 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { USER_DATA } from "@/constants/data";
+import type { StrapiUserProfile } from "@/lib/strapi";
 import { Mail } from "lucide-react";
 
-export default function Hero() {
+interface Props {
+  profile: StrapiUserProfile;
+}
+
+export default function Hero({ profile }: Props) {
   return (
     <section className="relative min-h-screen flex flex-col items-start justify-center p-6 pb-28 sm:p-24 sm:pt-28 z-10">
       <motion.div
@@ -34,14 +38,12 @@ export default function Hero() {
           transition={{ delay: 0.4, duration: 0.5 }}
           className="text-lg md:text-xl text-muted-foreground max-w-2xl font-light leading-relaxed"
         >
-          I'm an incoming penultimate at{" "}
+          I'm a penultimate at{" "}
           <span className="text-foreground font-semibold">
             Singapore Management University - BSc Information Systems
           </span>{" "}
-          . I like writing backend code and wiring up cloud infrastructure.
-          Still learning, but I take it seriously. Currently interning at
-          Eastern International University's Industry 4.0 Innovation Center in
-          Vietnam.
+          . I like building backend systems and wiring up cloud infrastructure.
+          Still learning, but I take it seriously.
         </motion.p>
 
         <motion.div
@@ -56,7 +58,7 @@ export default function Hero() {
             asChild
             className="hover:text-foreground transition-colors hover:bg-accent rounded-none border border-transparent hover:border-border p-2 w-10 h-10"
           >
-            <a href={`mailto:${USER_DATA.email}`} title="Email Me">
+            <a href={`mailto:${profile.email}`} title="Email Me">
               <Mail className="w-5 h-5" />
             </a>
           </Button>
@@ -68,10 +70,11 @@ export default function Hero() {
             className="hover:text-foreground transition-colors hover:bg-accent rounded-none border border-transparent hover:border-border p-2 w-10 h-10"
           >
             <a
-              href={USER_DATA.github}
+              href={profile.github}
               target="_blank"
               rel="noopener noreferrer"
               title="GitHub"
+              aria-label="GitHub"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -98,10 +101,11 @@ export default function Hero() {
             className="hover:text-foreground transition-colors hover:bg-accent rounded-none border border-transparent hover:border-border p-2 w-10 h-10"
           >
             <a
-              href={USER_DATA.linkedin}
+              href={profile.linkedin}
               target="_blank"
               rel="noopener noreferrer"
               title="LinkedIn"
+              aria-label="LinkedIn"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

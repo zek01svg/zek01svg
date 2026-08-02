@@ -25,7 +25,7 @@ export function ThemeProvider({
     if (typeof window === "undefined") return defaultTheme;
     const stored = localStorage.getItem(storageKey);
     if (stored === "dark" || stored === "light" || stored === "system") {
-      return stored as Theme;
+      return stored;
     }
     return defaultTheme;
   });

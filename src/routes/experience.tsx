@@ -1,6 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
-import ExperiencePage from "../features/experience/pages/experience-page";
+import { fetchExperiences } from "@/lib/strapi";
+import ExperiencePage from "@/features/experience/pages/experience-page";
 
 export const Route = createFileRoute("/experience")({
-  component: ExperiencePage,
+  loader: () => fetchExperiences(),
+  component: function ExperienceRoute() {
+    const experiences = Route.useLoaderData();
+    return <ExperiencePage experiences={experiences} />;
+  },
 });

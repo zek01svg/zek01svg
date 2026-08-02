@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { PROJECTS } from "@/constants/data";
+import type { StrapiProject } from "@/lib/strapi";
 import { ExternalLink } from "lucide-react";
 import {
   Card,
@@ -10,7 +10,11 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
-export default function ProjectGrid() {
+interface Props {
+  projects: StrapiProject[];
+}
+
+export default function ProjectGrid({ projects }: Props) {
   return (
     <section
       id="projects"
@@ -32,9 +36,9 @@ export default function ProjectGrid() {
       </motion.div>
 
       <div className="grid grid-cols-1 gap-8">
-        {PROJECTS.map((project, index) => (
+        {projects.map((project, index) => (
           <motion.div
-            key={project.title}
+            key={project.documentId}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -70,9 +74,9 @@ export default function ProjectGrid() {
                       </div>
                     </div>
                   </div>
-                  {project.links?.github && (
+                  {project.githubLink && (
                     <a
-                      href={project.links.github}
+                      href={project.githubLink}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="p-3 text-muted-foreground hover:text-foreground border border-border hover:border-foreground/30 transition-all"
@@ -89,8 +93,8 @@ export default function ProjectGrid() {
                   </p>
                 )}
                 <ul className="space-y-3 text-sm text-muted-foreground leading-relaxed font-light">
-                  {project.description.map(desc => (
-                    <li key={desc} className="flex gap-4">
+                  {project.description.map((desc, i) => (
+                    <li key={i} className="flex gap-4">
                       <span className="text-muted-foreground/40 font-mono shrink-0">
                         —
                       </span>
