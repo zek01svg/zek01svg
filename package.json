@@ -6,24 +6,23 @@
   "scripts": {
     "dev": "vite dev --port 3000",
     "build": "vite build",
-    "preview": "vite preview",
+    "preview": "bun run build && wrangler dev",
     "test": "vitest run",
     "lint:check": "oxlint --quiet",
     "format:check": "oxfmt --check",
     "lint:fix": "oxlint --fix",
     "format:fix": "oxfmt --write .",
     "typecheck": "tsc --noEmit",
-    "start": "bun .output/server/index.mjs",
     "prepare": "lefthook install || true",
-    "clean": "bunx rimraf node_modules .output .tanstack .vercel dist .turbo"
+    "clean": "bunx rimraf node_modules .tanstack .vercel dist .turbo",
+    "deploy": "bun run build && wrangler deploy",
+    "cf-typegen": "wrangler types"
   },
   "dependencies": {
     "@sentry/tanstackstart-react": "^10.69.0",
     "@t3-oss/env-core": "^0.13.11",
     "@tanstack/react-router": "^1.170.18",
     "@tanstack/react-start": "^1.168.34",
-    "@vercel/analytics": "^2.0.1",
-    "@vercel/speed-insights": "^2.0.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "framer-motion": "^12.43.0",
@@ -37,6 +36,7 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.52.0",
     "@tailwindcss/vite": "^4.3.3",
     "@tanstack/devtools-vite": "^0.8.3",
     "@tanstack/react-devtools": "^0.10.9",
@@ -46,14 +46,14 @@
     "@types/react-dom": "^19.2.4",
     "@vitejs/plugin-react": "^6.0.5",
     "jsdom": "^30.0.1",
-    "nitro": "^3.0.260610-beta",
     "oxfmt": "^0.61.0",
     "oxlint": "^1.76.0",
     "oxlint-tsgolint": "^7.0.2001",
     "tailwindcss": "^4.3.3",
     "typescript": "^6.0.3",
     "vite": "^8.2.0",
-    "vitest": "^4.1.10"
+    "vitest": "^4.1.10",
+    "wrangler": "^4.122.0"
   },
   "engines": {
     "bun": "1.3.14"

@@ -4,8 +4,6 @@ import { TanStackDevtools } from "@tanstack/react-devtools";
 import Navbar from "../components/custom/navbar";
 import { ThemeProvider } from "../components/providers/theme-provider";
 import { TooltipProvider } from "../components/ui/tooltip";
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/react";
 
 import appCss from "../globals.css?url";
 
@@ -89,8 +87,11 @@ function RootDocument({ children }: { children: React.ReactNode }) {
           />
         )}
         <Scripts />
-        <Analytics />
-        <SpeedInsights />
+        <script
+          type="module"
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon='{"token": "16f5bad4e90d4bb188bc4cb40c4835bc"}'
+        />
       </body>
     </html>
   );

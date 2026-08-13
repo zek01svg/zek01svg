@@ -17,3 +17,7 @@ todos.json
 .gstack/
 .claude
 .vercel
+
+.dev.vars*
+!.dev.vars.example
+!.env.example

@@ -2,8 +2,6 @@ name: Portfolio Site CI
 
 on:
   push:
-    branches:
-      - main
   workflow_dispatch:
 
 concurrency:
